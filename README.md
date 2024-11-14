@@ -4,23 +4,19 @@ CyberClimb Security+ Study Hub is a study tool designed to help users prepare fo
 
 ## Table of Contents
 - [Features](#features)
-- [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Future Enhancements](#future-enhancements)
 
 ## Features
-1. **Practice Exam**: A timed, multi-choice exam featuring key Security+ questions, with a 10-minute countdown to simulate test conditions.
+1. **Practice Exam**: A timed, multi-choice exam featuring key Security+ questions, with a 10-minute countdown to simulate test conditions. (Will eventually make it 90 minutes to simulate the actual exam)
 2. **Flashcard Acronyms**: Flashcards to help memorize important Security+ acronyms, supporting interactive learning.
+3. **Warm-up Questions**: Basic questions to help the user get warmed up for the eventual timed practice exam.
 
-## Getting Started
 
 ### Prerequisites
 - **Node.js** (version 14 or higher recommended)
 - **npm** (usually included with Node.js)
 
-### Installation
-1. **Clone the Repository**
-   ```bash
-   git clone <your-repository-url>
+
 
