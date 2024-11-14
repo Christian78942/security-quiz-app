@@ -33,3 +33,13 @@ The following features are planned for future releases to make CyberClimb a more
 - **Enhanced Timer and Exam Mode**  
   Allow users to select different timed modes (e.g., full-length exam simulation, quick quiz) and enable saving progress in case they need to pause.
 
+
+### Running the Program
+
+To start the project in development mode, use the following command:
+
+```bash
+npm run dev
+
+
+
