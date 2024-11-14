@@ -40,6 +40,3 @@ To start the project in development mode, use the following command:
 
 ```bash
 npm run dev
-
-
-
