@@ -24,6 +24,10 @@ CyberClimb Security+ Study Hub is a gamified study tool designed to help users p
 - Tracks user progress over time, allowing users to visualize their improvement.
 - Displays achievements, badges, and streaks earned as users advance in their learning journey.
 
+### 5. **Feedback From Users**
+
+- Allows users to send feedback on how to improve the website.
+
 ## Gamification Features
 
 CyberClimb is designed to motivate and engage users through gamification, including:
