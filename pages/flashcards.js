@@ -1,5 +1,3 @@
-// flashcards.js
-
 import { useState } from "react";
 import Link from "next/link";
 
@@ -33,143 +31,223 @@ export default function Flashcards() {
     { acronym: "IPSec", meaning: "Internet Protocol Security" },
     { acronym: "SAML", meaning: "Security Assertion Markup Language" },
     { acronym: "SSH", meaning: "Secure Shell" },
-    { acronym: "FDE", meaning: "Full Disk Encryption" },
-    { acronym: "IDS", meaning: "Intrusion Detection System" },
-    { acronym: "TLS", meaning: "Transport Layer Security" },
-    { acronym: "MITM", meaning: "Man In The Middle" },
-    { acronym: "RAID", meaning: "Redundant Array of Independent Disks" },
-    { acronym: "DLP", meaning: "Data Loss Prevention" },
-    { acronym: "DMZ", meaning: "Demilitarized Zone" },
-    { acronym: "HTTPS", meaning: "Hypertext Transfer Protocol Secure" },
-    { acronym: "OTP", meaning: "One-Time Password" },
-    { acronym: "SOC", meaning: "Security Operations Center" },
-    { acronym: "MTTR", meaning: "Mean Time to Recover" },
-    { acronym: "MTBF", meaning: "Mean Time Between Failures" },
-    { acronym: "RBAC", meaning: "Role-Based Access Control" },
-    { acronym: "BYOD", meaning: "Bring Your Own Device" },
-    { acronym: "DAC", meaning: "Discretionary Access Control" },
-    { acronym: "SLA", meaning: "Service Level Agreement" },
-    { acronym: "BIA", meaning: "Business Impact Analysis" },
-    { acronym: "APT", meaning: "Advanced Persistent Threat" },
-    { acronym: "CBC", meaning: "Cipher Block Chaining" },
-    { acronym: "AV", meaning: "Antivirus" },
   ];
 
   // State management
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userInput, setUserInput] = useState("");
-  const [feedback, setFeedback] = useState(null); // Track feedback (correct/incorrect)
-  const [showAnswer, setShowAnswer] = useState(false); // Track answer visibility
+  const [feedback, setFeedback] = useState(null);
+  const [showAnswer, setShowAnswer] = useState(false);
+  const [streak, setStreak] = useState(0);
+  const [badges, setBadges] = useState([]);
+  const [randomMode, setRandomMode] = useState(false);
 
-  // Current acronym data
+  // Normalize input to remove spaces and lowercase for comparison
+  const normalize = (str) => str.replace(/[\s,]+/g, "").toLowerCase();
+
+  const getRandomIndex = () => Math.floor(Math.random() * acronyms.length);
+
+  const toggleRandomMode = () => {
+    setRandomMode(!randomMode);
+    if (!randomMode) {
+      setCurrentIndex(getRandomIndex());
+    }
+  };
+
   const currentAcronym = acronyms[currentIndex];
 
-  // Handle user input
   const handleInputChange = (e) => {
     setUserInput(e.target.value);
   };
 
-  // Normalize input by removing spaces and commas, and making lowercase
-  const normalize = (str) => str.replace(/[\s,]+/g, "").toLowerCase();
-
-  // Handle answer submission
   const handleSubmit = () => {
     if (normalize(userInput) === normalize(currentAcronym.meaning)) {
       setFeedback("correct");
-      setShowAnswer(false); // Hide answer if correct
+      setStreak(streak + 1);
+      setShowAnswer(false);
+      updateBadges(streak + 1);
     } else {
       setFeedback("incorrect");
+      setStreak(0);
     }
   };
 
-  // Move to the next acronym or retry
   const handleNext = () => {
     if (feedback === "correct") {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % acronyms.length);
+      if (randomMode) {
+        setCurrentIndex(getRandomIndex());
+      } else {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % acronyms.length);
+      }
     }
     setUserInput("");
     setFeedback(null);
-    setShowAnswer(false); // Reset answer visibility
+    setShowAnswer(false);
   };
 
-  // Show answer handler
   const handleShowAnswer = () => {
     setShowAnswer(true);
   };
 
+  const updateBadges = (streak) => {
+    const newBadges = [...badges];
+    if (streak === 5 && !badges.includes("Bronze Streak")) {
+      newBadges.push("Bronze Streak");
+    } else if (streak === 10 && !badges.includes("Silver Streak")) {
+      newBadges.push("Silver Streak");
+    } else if (streak === 20 && !badges.includes("Gold Streak")) {
+      newBadges.push("Gold Streak");
+    }
+    setBadges(newBadges);
+  };
+
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div className="container">
       <h1>Flashcard Acronyms</h1>
       <p>Test your knowledge of important Security+ acronyms!</p>
 
-      {/* Display the current acronym */}
-      <div>
+      <button
+        onClick={toggleRandomMode}
+        className={`random-mode-btn ${randomMode ? "active" : ""}`}
+      >
+        {randomMode ? "Disable Random Mode" : "Enable Random Mode"}
+      </button>
+
+      <div className="streak">
+        <p>🔥 Current Streak: {streak}</p>
+      </div>
+
+      {badges.length > 0 && (
+        <div className="badges">
+          <p>Achievements Unlocked:</p>
+          {badges.map((badge, index) => (
+            <span key={index} className="badge">
+              🏆 {badge}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className="acronym-section">
         <h2>{currentAcronym.acronym}</h2>
         <p>Type in the full meaning of the acronym:</p>
-
         <input
           type="text"
           value={userInput}
           onChange={handleInputChange}
           placeholder="Your answer"
-          style={{ padding: "10px", width: "300px", marginBottom: "10px" }}
+          className="input"
         />
-
-        <button
-          onClick={handleSubmit}
-          style={{ marginLeft: "10px", padding: "10px 20px" }}
-        >
+        <button onClick={handleSubmit} className="btn">
           Submit
         </button>
-
-        {/* Reminder and Show Answer button */}
-        <div style={{ marginTop: "10px" }}>
-          <p style={{ fontSize: "0.9em", color: "#888" }}>
-            Only click "Show Answer" if you've attempted it on your own!
-          </p>
-          <button
-            onClick={handleShowAnswer}
-            style={{
-              marginLeft: "10px",
-              padding: "10px 20px",
-              backgroundColor: "#FFA500",
-              color: "white",
-            }}
-          >
-            Show Answer
-          </button>
-        </div>
-
-        {/* Display answer if user clicks Show Answer */}
-        {showAnswer && (
-          <div style={{ marginTop: "10px", color: "#555" }}>
-            <p>
-              <strong>Answer:</strong> {currentAcronym.meaning}
-            </p>
-          </div>
-        )}
       </div>
 
-      {/* Feedback display */}
+      <button onClick={handleShowAnswer} className="btn show-answer-btn">
+        Show Answer
+      </button>
+
+      {showAnswer && (
+        <div className="answer">
+          <p>
+            <strong>Answer:</strong> {currentAcronym.meaning}
+          </p>
+        </div>
+      )}
+
       {feedback && (
-        <div style={{ marginTop: "20px" }}>
-          {feedback === "correct" ? (
-            <p style={{ color: "green" }}>Correct! Well done.</p>
-          ) : (
-            <p style={{ color: "red" }}>Incorrect. Try again?</p>
-          )}
-          <button onClick={handleNext} style={{ padding: "10px 20px" }}>
+        <div className={`feedback ${feedback}`}>
+          <p>
+            {feedback === "correct"
+              ? "Correct! Well done."
+              : "Incorrect. Try again?"}
+          </p>
+          <button onClick={handleNext} className="btn">
             {feedback === "correct" ? "Next Acronym" : "Retry"}
           </button>
         </div>
       )}
 
-      {/* Back to Home button */}
       <Link href="/">
-        <button style={{ marginTop: "30px", padding: "10px 20px" }}>
-          Back to Home
-        </button>
+        <button className="btn back-to-home">Back to Home</button>
       </Link>
+
+      <style jsx>{`
+        .container {
+          text-align: center;
+          padding: 20px;
+          font-family: Arial, sans-serif;
+        }
+
+        h1 {
+          font-size: 2em;
+          color: #333;
+        }
+
+        .random-mode-btn {
+          background-color: gray;
+          color: white;
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: none;
+          cursor: pointer;
+          margin: 10px;
+        }
+
+        .random-mode-btn.active {
+          background-color: green;
+        }
+
+        .input {
+          padding: 10px;
+          width: 300px;
+          margin-bottom: 10px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+        }
+
+        .btn {
+          padding: 10px 20px;
+          margin: 10px;
+          border: none;
+          background-color: #007bff;
+          color: white;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+
+        .btn.show-answer-btn {
+          background-color: orange;
+        }
+
+        .btn:hover {
+          background-color: #0056b3;
+        }
+
+        .badges {
+          margin-top: 20px;
+        }
+
+        .badge {
+          margin-right: 10px;
+          color: gold;
+          font-size: 1.2em;
+        }
+
+        .answer {
+          margin-top: 10px;
+          font-size: 1.2em;
+          color: #333;
+        }
+
+        .feedback.correct {
+          color: green;
+        }
+
+        .feedback.incorrect {
+          color: red;
+        }
+      `}</style>
     </div>
   );
 }

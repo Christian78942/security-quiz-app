@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 export default function PracticeExam() {
-  // Questions for the practice exam
   const questions = [
     {
       question:
@@ -99,34 +98,316 @@ export default function PracticeExam() {
       ],
       answer: "Partially known environment",
     },
+
+    {
+      question: "What is the primary purpose of a firewall?",
+      options: [
+        "Encrypting data at rest",
+        "Preventing unauthorized access",
+        "Managing user accounts",
+        "Detecting malware",
+      ],
+      answer: "Preventing unauthorized access",
+    },
+    {
+      question: "Which of the following is an example of social engineering?",
+      options: [
+        "Phishing email",
+        "SQL injection",
+        "Man-in-the-middle attack",
+        "Buffer overflow",
+      ],
+      answer: "Phishing email",
+    },
+    {
+      question: "What does PKI stand for?",
+      options: [
+        "Private Key Infrastructure",
+        "Public Key Infrastructure",
+        "Protected Key Identity",
+        "Personal Key Identity",
+      ],
+      answer: "Public Key Infrastructure",
+    },
+    {
+      question: "Which protocol uses port 22 by default?",
+      options: ["HTTP", "FTP", "SSH", "DNS"],
+      answer: "SSH",
+    },
+    {
+      question: "What is the primary purpose of an SSL certificate?",
+      options: [
+        "Ensuring data integrity",
+        "Securing communication channels",
+        "Detecting unauthorized access",
+        "Encrypting local files",
+      ],
+      answer: "Securing communication channels",
+    },
+    {
+      question: "Which type of malware is designed to spread automatically?",
+      options: ["Ransomware", "Trojan", "Spyware", "Worm"],
+      answer: "Worm",
+    },
+    {
+      question:
+        "What is a major benefit of implementing two-factor authentication?",
+      options: [
+        "Faster authentication process",
+        "Enhanced security",
+        "Reduced system downtime",
+        "Increased user convenience",
+      ],
+      answer: "Enhanced security",
+    },
+    {
+      question: "Which hashing algorithm is considered the most secure?",
+      options: ["MD5", "SHA-1", "SHA-256", "DES"],
+      answer: "SHA-256",
+    },
+    {
+      question: "What is the purpose of a honeypot?",
+      options: [
+        "To capture and analyze attacker activity",
+        "To encrypt sensitive data",
+        "To prevent unauthorized access",
+        "To secure wireless networks",
+      ],
+      answer: "To capture and analyze attacker activity",
+    },
+    {
+      question:
+        "Which of the following is NOT an example of a symmetric encryption algorithm?",
+      options: ["AES", "DES", "RSA", "Blowfish"],
+      answer: "RSA",
+    },
+    {
+      question: "What does the principle of least privilege entail?",
+      options: [
+        "Giving users full administrative access",
+        "Allowing access only to what is required for their role",
+        "Enabling remote access for all employees",
+        "Providing temporary access to external users",
+      ],
+      answer: "Allowing access only to what is required for their role",
+    },
+    {
+      question: "Which tool is commonly used for packet sniffing?",
+      options: ["Wireshark", "Burp Suite", "Nmap", "Metasploit"],
+      answer: "Wireshark",
+    },
+    {
+      question: "What does the acronym IDS stand for?",
+      options: [
+        "Intrusion Detection System",
+        "Information Distribution System",
+        "Internet Defense Strategy",
+        "Internal Data Storage",
+      ],
+      answer: "Intrusion Detection System",
+    },
+    {
+      question:
+        "Which of the following is an example of multi-factor authentication?",
+      options: [
+        "Password and PIN",
+        "Password and fingerprint",
+        "Password and username",
+        "Password and security question",
+      ],
+      answer: "Password and fingerprint",
+    },
+    {
+      question: "What is the primary function of a VPN?",
+      options: [
+        "Encrypting web pages",
+        "Providing secure remote access",
+        "Blocking malicious websites",
+        "Detecting unauthorized access",
+      ],
+      answer: "Providing secure remote access",
+    },
+    {
+      question:
+        "Which type of attack exploits vulnerabilities in web applications?",
+      options: [
+        "Phishing",
+        "SQL Injection",
+        "Denial of Service",
+        "Man-in-the-middle",
+      ],
+      answer: "SQL Injection",
+    },
+    {
+      question: "What does WPA3 improve upon compared to WPA2?",
+      options: [
+        "User authentication",
+        "Wireless range",
+        "Device compatibility",
+        "Network bandwidth",
+      ],
+      answer: "User authentication",
+    },
+    {
+      question: "Which device is used to segment network traffic?",
+      options: ["Firewall", "Router", "Switch", "IDS"],
+      answer: "Switch",
+    },
+    {
+      question: "What is the purpose of a DMZ in networking?",
+      options: [
+        "To isolate internal networks from external threats",
+        "To provide Wi-Fi access to guests",
+        "To monitor network performance",
+        "To encrypt sensitive files",
+      ],
+      answer: "To isolate internal networks from external threats",
+    },
+    {
+      question: "Which protocol is commonly used for email encryption?",
+      options: ["SSL/TLS", "HTTPS", "FTP", "IPSec"],
+      answer: "SSL/TLS",
+    },
+    {
+      question: "What is the purpose of an access control list (ACL)?",
+      options: [
+        "To log all user activity",
+        "To restrict access to resources",
+        "To manage user accounts",
+        "To monitor network traffic",
+      ],
+      answer: "To restrict access to resources",
+    },
+    {
+      question: "Which of the following is an asymmetric encryption algorithm?",
+      options: ["AES", "RSA", "Blowfish", "DES"],
+      answer: "RSA",
+    },
+    {
+      question: "What is an example of a physical security control?",
+      options: ["Firewall", "Biometric scanner", "Antivirus software", "IDS"],
+      answer: "Biometric scanner",
+    },
+    {
+      question: "What is the primary purpose of the OSI model?",
+      options: [
+        "To secure communication",
+        "To define network protocols",
+        "To standardize communication",
+        "To encrypt data",
+      ],
+      answer: "To standardize communication",
+    },
+    {
+      question:
+        "Which of the following attacks involves tricking users into revealing sensitive information?",
+      options: ["Phishing", "Smishing", "Spear Phishing", "All of the above"],
+      answer: "All of the above",
+    },
+    {
+      question: "What does the acronym DLP stand for?",
+      options: [
+        "Data Loss Prevention",
+        "Digital Logic Processor",
+        "Device Level Protocol",
+        "Data Link Protection",
+      ],
+      answer: "Data Loss Prevention",
+    },
+    {
+      question: "Which of the following is an example of a preventive control?",
+      options: ["Firewall", "Audit logs", "Security cameras", "IDS"],
+      answer: "Firewall",
+    },
+    {
+      question: "What is the purpose of a hot site?",
+      options: [
+        "To analyze cyber attacks",
+        "To provide real-time data backups",
+        "To quickly recover business operations",
+        "To monitor network performance",
+      ],
+      answer: "To quickly recover business operations",
+    },
+    {
+      question: "Which protocol is used for secure file transfers?",
+      options: ["FTP", "HTTP", "SFTP", "Telnet"],
+      answer: "SFTP",
+    },
+    {
+      question: "What does the acronym SIEM stand for?",
+      options: [
+        "Security Incident and Event Management",
+        "Secure Internet Encryption Mechanism",
+        "System Information and Event Manager",
+        "Security Information Encryption Model",
+      ],
+      answer: "Security Incident and Event Management",
+    },
+    {
+      question: "What is the primary goal of risk assessment?",
+      options: [
+        "To identify vulnerabilities",
+        "To monitor network traffic",
+        "To improve encryption algorithms",
+        "To authenticate users",
+      ],
+      answer: "To identify vulnerabilities",
+    },
+    {
+      question: "Which of the following uses port 443 by default?",
+      options: ["HTTP", "HTTPS", "FTP", "SMTP"],
+      answer: "HTTPS",
+    },
+    {
+      question: "Which attack exploits an unpatched software vulnerability?",
+      options: ["Zero-day", "Man-in-the-middle", "Brute force", "Phishing"],
+      answer: "Zero-day",
+    },
+    {
+      question: "What is the primary purpose of a security baseline?",
+      options: [
+        "To encrypt data",
+        "To establish a minimum security standard",
+        "To detect vulnerabilities",
+        "To isolate network segments",
+      ],
+      answer: "To establish a minimum security standard",
+    },
+    {
+      question:
+        "Which security principle ensures that sensitive data is only accessible to authorized users?",
+      options: [
+        "Integrity",
+        "Availability",
+        "Confidentiality",
+        "Authentication",
+      ],
+      answer: "Confidentiality",
+    },
   ];
 
-  // State management
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState("");
   const [score, setScore] = useState(0);
-  const [timeLeft, setTimeLeft] = useState(600); // Set timer to 600 seconds (10 minutes)
+  const [timeLeft, setTimeLeft] = useState(2700);
   const [isExamOver, setIsExamOver] = useState(false);
 
-  // Current question data
   const currentQuestion = questions[currentIndex];
 
-  // Timer logic
   useEffect(() => {
     if (timeLeft > 0 && !isExamOver) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     } else if (timeLeft === 0) {
-      setIsExamOver(true); // End exam when timer reaches zero
+      setIsExamOver(true);
     }
   }, [timeLeft, isExamOver]);
 
-  // Handle option selection
   const handleOptionChange = (option) => {
     setSelectedOption(option);
   };
 
-  // Handle answer submission
   const handleSubmit = () => {
     if (selectedOption === currentQuestion.answer) {
       setScore(score + 1);
@@ -139,12 +420,24 @@ export default function PracticeExam() {
     }
   };
 
-  // Display results
   const handleViewResults = () => {
+    const previousScores = JSON.parse(localStorage.getItem("examScores")) || [];
+    const newScore = {
+      score: score,
+      total: questions.length,
+      date: new Date().toLocaleString(),
+    };
+    localStorage.setItem(
+      "examScores",
+      JSON.stringify([...previousScores, newScore])
+    );
     alert(`Your final score is: ${score} out of ${questions.length}`);
   };
 
-  // Format time display as mm:ss
+  const handleEndExam = () => {
+    setIsExamOver(true);
+  };
+
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
@@ -165,6 +458,11 @@ export default function PracticeExam() {
         }}
       >
         Time Left: {formatTime(timeLeft)}
+      </div>
+
+      {/* Questions Remaining */}
+      <div style={{ marginBottom: "20px", fontSize: "1.2em", color: "blue" }}>
+        Questions Remaining: {questions.length - currentIndex}
       </div>
 
       {/* Display current question if exam is not over */}
@@ -195,6 +493,18 @@ export default function PracticeExam() {
             disabled={!selectedOption} // Disable button until an option is selected
           >
             Submit
+          </button>
+
+          <button
+            onClick={handleEndExam}
+            style={{
+              marginLeft: "10px",
+              padding: "10px 20px",
+              backgroundColor: "red",
+              color: "white",
+            }}
+          >
+            End Exam
           </button>
         </div>
       )}

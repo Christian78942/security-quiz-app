@@ -1,38 +1,44 @@
 # CyberClimb Security+ Study Hub
 
-CyberClimb Security+ Study Hub is a study tool designed to help users prepare for the CompTIA Security+ certification. This project currently includes features like timed practice exams, acronym flashcards, and warm-up questions, making it an ideal platform for those looking to test and enhance their knowledge of Security+ topics.
-
+CyberClimb Security+ Study Hub is a gamified study tool designed to help users prepare for the CompTIA Security+ certification. By combining interactive features such as timed practice exams, flashcard acronyms, and streak tracking, this platform ensures an engaging and rewarding learning experience.
 
 ## Features
-1. **Practice Exam**: A timed, multi-choice exam featuring key Security+ questions, with a 10-minute countdown to simulate test conditions. (Will eventually make it 90 minutes to simulate the actual exam)
-2. **Flashcard Acronyms**: Flashcards to help memorize important Security+ acronyms, supporting interactive learning.
-3. **Warm-up Questions**: Basic questions to help the user get warmed up for the eventual timed practice exam.
 
+### 1. **Flashcard Acronyms**
 
-### Prerequisites
-- **Node.js** (version 14 or higher recommended)
-- **npm** (usually included with Node.js)
+- Interactive flashcards designed to help users memorize important Security+ concepts and acronyms.
+- Encourages mastery through streak tracking and performance monitoring.
 
+### 2. **Timed Practice Questions**
 
-### Future Enhancements
+- Offers multiple-choice questions to simulate the pressure of exam conditions.
+- Users can test and improve their foundational knowledge of Security+ topics with a countdown timer.
 
-The following features are planned for future releases to make CyberClimb a more effective study platform:
+### 3. **Final Practice Exam**
 
-- **Adaptive Learning**  
-  Implement dynamic question difficulty that adjusts based on the user’s performance. If the user answers questions correctly, the system will introduce more challenging questions. If the user struggles, it will provide more foundational questions.
+- Simulates a full-length Security+ exam with realistic timed conditions.
+- Provides instant feedback to evaluate readiness and boost confidence.
 
-- **Customized Study Plan**  
-  After completing a set of questions, offer personalized recommendations on topics to focus on based on the user’s performance, strengths, and weaknesses.
+### 4. **Progress Dashboard**
 
-- **Expanded Question Bank**  
-  Add more questions to the Practice Exam section to cover a broader range of Security+ topics, creating a more comprehensive study experience.
+- Tracks user progress over time, allowing users to visualize their improvement.
+- Displays achievements, badges, and streaks earned as users advance in their learning journey.
 
-- **Progress Tracking and Analytics**  
-  Track user scores and progress over time. Provide detailed analytics to help users understand their performance across different topics.
+## Gamification Features
 
-- **Enhanced Timer and Exam Mode**  
-  Allow users to select different timed modes (e.g., full-length exam simulation, quick quiz) and enable saving progress in case they need to pause.
+CyberClimb is designed to motivate and engage users through gamification, including:
 
+- **Streaks:** Users can earn streaks by answering consecutive questions correctly. Higher streaks showcase user performance and consistency.
+- **Badges:** Unlockable badges are awarded as milestones are achieved:
+  - **Bronze Streak Badge:** Awarded after 5 consecutive correct answers.
+  - **Silver Streak Badge:** Awarded after 10 consecutive correct answers.
+  - **Gold Streak Badge:** Awarded after 20 consecutive correct answers.
+- **Progress Tracking:** Real-time progress bars and a dashboard that displays past scores and performance trends.
+
+## Prerequisites
+
+- **Node.js**: Version 14 or higher is recommended.
+- **npm**: Included with Node.js installation.
 
 ### Running the Program
 
@@ -40,3 +46,4 @@ To start the project in development mode, use the following command:
 
 ```bash
 npm run dev
+```
